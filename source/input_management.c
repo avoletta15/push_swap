@@ -82,19 +82,47 @@ int	ft_duplicate_nbr(char **av, int ac)
 	return(0);
 }
 
-int	ft_node_new(char *av)
-{
-	t_node *node;
 
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
-		return (1);
-	node->nbr = ft_atoi(av[1]);
-	node->next = NULL;
-	return(0);
+
+
+t_node	*ft_node_new(const char *av)
+{
+	t_node *new;
+
+	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		return (NULL);
+	new->nbr = ft_atoi(av);
+	new->next = NULL;
+	return(new);
 }
 
-void	ft_fill_stack(char **av, int ac, t_node *node)
+t_node	*ft_node_back(t_node *node, char *av)
 {
+	t_node	*new;
+	t_node	*temp;
 
+	new = NULL;
+	temp = ft_node_new(av);
+	temp->nbr = ft_atoi(av);
+	if(!node)
+		node = temp;
+	else
+	{
+		new = node;
+		while(new->next)
+			new = new->next;
+		new->next = temp;
+	}
+	return(new);
 }
+
+
+
+
+
+
+// void	ft_fill_stack(char **av, int ac, t_node *node)
+// {
+
+// }
