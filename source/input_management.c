@@ -81,3 +81,20 @@ int	ft_duplicate_nbr(char **av, int ac)
 	}
 	return(0);
 }
+
+int	ft_node_new(char *av)
+{
+	t_node *node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+		return (1);
+	node->nbr = ft_atoi(av[1]);
+	node->next = NULL;
+	return(0);
+}
+
+void	ft_fill_stack(char **av, int ac, t_node *node)
+{
+
+}
