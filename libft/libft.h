@@ -19,6 +19,7 @@ int			ft_isascii(int a);
 int			ft_isdigit(int a);
 int			ft_isprint(int a);
 char		*ft_itoa(int n);
+long long	ft_atoll(const char *str);
 void		*ft_memchr(const void *s, int c, size_t n);
 int			ft_memcmp(const void *str1, const void *str2, size_t n);
 void		*ft_memcpy(void *dst, const void *src, size_t n);

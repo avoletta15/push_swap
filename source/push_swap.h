@@ -14,12 +14,10 @@
 /* Stack Node Struct */
 
 /* Input Management */
-int		ft_isnbr(char **av, int ac);
-int		ft_size_int(char **av, int ac);
-int		ft_duplicate_nbr(char **av, int ac);
-
-
-/* Sort Args */
+int	ft_isnbr(char **av, int ac);
+int	ft_size_int(char **av, int ac);
+int	ft_duplicate_nbr(char **av, int ac);
+int	ft_arg_protection(char **av, int ac);
 
 
 #endif
