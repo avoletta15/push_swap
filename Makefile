@@ -23,7 +23,7 @@ $(NAME) : $(OBJS)
 	@echo
 	@make -s -C ./libft/
 	@$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
-	@echo "$(GREEN) Your $(ORANGE)$(NAME)(GREEN)is done!$(DEFAULT)"
+	@echo "$(GREEN) Your $(ORANGE)$(NAME) $(GREEN)is done!$(DEFAULT)"
 
 clean:
 	@make clean -s -C ./libft/
