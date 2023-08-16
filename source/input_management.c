@@ -88,9 +88,9 @@ int	ft_arg_protection(char **av, int ac)
 {
 	if(ft_isnbr(av, ac) == 1) /* only numbers protection */
 		return(1);
-	 if(ft_size_int(av, ac) == 1) /* size of an int (min or max) protection */
+	 if(ft_duplicate_nbr(av, ac) == 1) /* non duplicated numbers protection */
 		return(1);
-	 if(ft_duplicate_nbr(av, ac) == 1) /* n\on duplicated numbers protection */
+	 if(ft_size_int(av, ac) == 1) /* size of an int (min or max) protection */
 		return(1);
 	return(0);
 }

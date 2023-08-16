@@ -19,5 +19,7 @@ int	ft_size_int(char **av, int ac);
 int	ft_duplicate_nbr(char **av, int ac);
 int	ft_arg_protection(char **av, int ac);
 
+/* Sorting */
+void	sort_3(t_list **head);
 
 #endif
