@@ -10,7 +10,15 @@
 # include "../libft/libft.h"
 
 
+/* Outputs A */
+void	ft_sa(t_list **stack);
+void	ft_ra(t_list **stack);
+void	ft_rra(t_list **stack);
 
+/* Outputs B */
+void	ft_sb(t_list **stack);
+void	ft_rb(t_list **stack);
+void	ft_rrb(t_list **stack);
 /* List Creation */
 t_list	*new_node(char *av);
 
