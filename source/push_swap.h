@@ -20,8 +20,15 @@ int	ft_size_int(char **av, int ac);
 int	ft_duplicate_nbr(char **av, int ac);
 int	ft_arg_protection(char **av, int ac);
 
-/* Sorting */
+/* Checking if is Sorted */
 int	get_nbr(t_list *stack_a);
 int	ft_is_sorted(t_list *stack_a);
+
+/* Sorting */
+void	ft_organizing_sort_type(t_list **stack_a);
+void	ft_swap(t_list **stack);
+void	ft_rotate(t_list **stack);
+void	ft_rev_rotate(t_list **stack);
+void	ft_sorting_three(t_list **stack);
 
 #endif
