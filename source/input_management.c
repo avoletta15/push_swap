@@ -17,10 +17,7 @@ int	ft_isnbr(char **av, int ac)
 				if(av[j][i] >= '0' && av[j][i] <= '9')
 					i++;
 				else
-				{	
-					ft_putendl_fd("Error", 2);
 					return(1);
-				}
 			}
 		}
 		i = 0;
@@ -39,25 +36,11 @@ int	ft_size_int(char **av, int ac)
 	{
 		nbr = ft_atoll(&av[j][0]);
 		if (ft_strlen(&av[j][0]) > 11)
-		{
-			ft_putendl_fd("Error", 2);
 			return(1);
-		}
-		if (ft_strlen(&av[j][0]) == 10)
+		if (ft_strlen(&av[j][0]) >= 10)
 		{	
-			if(nbr > INT_MAX)
-			{
-				ft_putendl_fd("Error", 2);
+			if(nbr > INT_MAX || nbr < INT_MIN)
 				return(1);
-			}
-		}
-		if(ft_strlen(&av[j][0]) == 11)
-		{
-			if(nbr < INT_MIN)
-			{
-				ft_putendl_fd("Error", 2);
-				return(1);
-			}
 		}
 		j++;
 	}

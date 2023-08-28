@@ -11,7 +11,8 @@
 
 
 
-/* Stack Node Struct */
+/* List Creation */
+t_list	*new_node(char *av);
 
 /* Input Management */
 int	ft_isnbr(char **av, int ac);
@@ -20,6 +21,7 @@ int	ft_duplicate_nbr(char **av, int ac);
 int	ft_arg_protection(char **av, int ac);
 
 /* Sorting */
-void	sort_3(t_list **head);
+int	get_nbr(t_list *stack_a);
+int	ft_is_sorted(t_list *stack_a);
 
 #endif

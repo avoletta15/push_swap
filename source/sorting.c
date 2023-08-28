@@ -1,7 +1,22 @@
 #include "push_swap.h"
 
-void	sort_3(t_list **head)
+int	get_nbr(t_list *stack_a)
 {
-	printf("head content: %i\n", *(int *)(*head)->content);
-	printf("head addr: %p\n", *head);
+	return(*(int *)stack_a->content);
+}
+
+int	ft_is_sorted(t_list *stack_a)
+{
+	int	i;
+
+	i = get_nbr(stack_a);
+	while(stack_a)
+	{
+		if(i > get_nbr(stack_a))
+			return(1);
+		i = get_nbr(stack_a);
+		stack_a = stack_a->next;
+
+	}
+	return(0);
 }

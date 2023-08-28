@@ -1,40 +1,39 @@
 #include "push_swap.h"
 
+t_list	*new_node(char *av)
+{
+	int		*nbr;
+
+	nbr = (int *)malloc(sizeof(int));
+		if (!nbr)
+	*nbr = ft_atoi(av);
+	return (ft_lstnew(nbr));
+}
+
 int	main(int ac, char **av)
 {
 	int		j;
 	t_list	*node;
-	t_list	*save;
-	t_list	**head_a;
-	int		*nbr;
+	t_list	*stack_a;
 
+	stack_a = NULL;
 	j = 1;
 	if(ac >= 3 && ft_arg_protection(av, ac) == 0) /* minimun 2 numbers to sort & protections */
 	{
-		nbr = (int *)malloc(sizeof(int));
-		if (!nbr)
-			return (0);
-		*nbr = ft_atoi(av[j]);
-		node = ft_lstnew(nbr);
-		head_a = &node;
-		if(node) /* creation of a linked list by adding nodes at the end of it */
-		{
-			j++;
-			while(j < ac)
+		while(j < ac)
+		{	
+			node = new_node(av[j]);
+			if(node) /* creation of a linked list by adding nodes at the end of it */
 			{
-				nbr = (int *)malloc(sizeof(int));
-				if (!nbr)
-					return (0);
-				*nbr = ft_atoi(av[j]);
-				node->next = ft_lstnew(nbr);
-				node = node->next;
+				ft_lstadd_back(&stack_a, node);
 				j++;
 			}
 		}
 	}
-	if(ac >= 3 && ac <= 4)
+	else
 	{
-		sort_3(head_a);
+		ft_putendl_fd("Error", 2);
+		exit(EXIT_FAILURE);
 	}
 	return(0);
 }
