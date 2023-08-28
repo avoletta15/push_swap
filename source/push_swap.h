@@ -9,6 +9,8 @@
 #include 	<sys/_types.h>
 # include "../libft/libft.h"
 
+/* Error */
+void	ft_error(void);
 
 /* Outputs A */
 void	ft_sa(t_list **stack);
@@ -30,7 +32,7 @@ int	ft_arg_protection(char **av, int ac);
 
 /* Checking if is Sorted */
 int	get_nbr(t_list *stack_a);
-int	ft_is_sorted(t_list *stack_a);
+int	ft_sorting_checker(t_list *stack_a);
 
 /* Sorting */
 void	ft_organizing_sort_type(t_list **stack_a);

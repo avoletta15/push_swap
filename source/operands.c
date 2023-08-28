@@ -1,13 +1,19 @@
 #include "push_swap.h"
 
+/**************************************************************
+* saving the begining of the list                             *
+* syaing that the begining of the list is now the second node *
+* sayng that the begining of the string now points to NULL    *
+* saying that the second node is now the former first node    *
+***************************************************************/
 void	ft_swap(t_list **stack)
 {
 	t_list	*temp;
-	
-	temp = *stack; /* saving the begining of the list */
-	*stack = (*stack)->next; /* syaing that the begining of the list is now the second node */
-	temp->next = temp->next->next; /* sayng that the begining of the string now points to NULL */
-	(*stack)->next = temp; /* saying that the second node is now the former first node */
+
+	temp = *stack; 
+	*stack = (*stack)->next; 
+	temp->next = temp->next->next; 
+	(*stack)->next = temp;
 }
 
 void	ft_rotate(t_list **stack)
@@ -20,8 +26,9 @@ void	ft_rotate(t_list **stack)
 	*stack_temp = (*stack_temp)->next;
 	first->next = NULL;
 	ft_lstadd_back(stack, first);
-	/* free_matrix(stack_temp) */
 }
+
+/* free_matrix(stack_temp) acima*/
 
 void	ft_rev_rotate(t_list **stack)
 {
