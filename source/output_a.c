@@ -1,19 +1,28 @@
 #include "push_swap.h"
 
-void	ft_sa(t_list **stack)
+void	ft_swap_out(t_list **stack, char name_stack)
 {
 	ft_swap(stack);
-	ft_putendl_fd("sa", 1);
+	if (name_stack == 'a')
+		ft_putendl_fd("sa", 1);
+	else if (name_stack == 'b')
+		ft_putendl_fd("sb", 1);
 }
 
-void	ft_ra(t_list **stack)
+void	ft_rotate_out(t_list **stack, char name_stack)
 {
 	ft_rotate(stack);
-	ft_putendl_fd("ra", 1);
+	if (name_stack == 'a')
+		ft_putendl_fd("ra", 1);
+	else if (name_stack == 'b')
+		ft_putendl_fd("rb", 1);
 }
 
-void	ft_rra(t_list **stack)
+void	ft_revrotate_out(t_list **stack, char name_stack)
 {
 	ft_rev_rotate(stack);
-	ft_putendl_fd("rra", 1);
+	if (name_stack == 'a')
+		ft_putendl_fd("rra", 1);
+	else if (name_stack == 'b')
+		ft_putendl_fd("rrb", 1);
 }

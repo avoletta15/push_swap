@@ -34,8 +34,6 @@ int	main(int ac, char **av)
 	else
 		ft_error ();
 	if (ft_sorting_checker(stack_a) == 1)
-	{
 		ft_organizing_sort_type (&stack_a);
-	}
 	return (0);
 }
