@@ -37,3 +37,13 @@ void	ft_rev_rotate(t_list **stack)
 	temp = ft_lstlast(*stack);
 	ft_lstadd_front(stack, temp);
 }
+
+void	ft_push(t_list **origin, t_list **dest)
+{
+	t_list	*temp;
+
+	temp = *dest;
+	dest = (*dest)->next;
+	temp->next = *origin;
+	*origin = temp;
+}

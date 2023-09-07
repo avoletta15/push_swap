@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-int	get_nbr(t_list *stack_a)
+int	get_nbr(t_list *stack)
 {
-	return (*(int *)(stack_a->content));
+	return (*(int *)(stack->content));
 }
 
 int	ft_sorting_checker(t_list *stack_a)

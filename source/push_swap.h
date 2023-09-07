@@ -16,6 +16,7 @@ void	ft_error(void);
 void	ft_swap_out(t_list **stack, char name_stack);
 void	ft_rotate_out(t_list **stack, char name_stack);
 void	ft_revrotate_out(t_list **stack, char name_stack);
+void	ft_push_out(t_list **origin, t_list **dest, char name_stack);
 
 /* List Creation */
 t_list	*new_node(char *av);
@@ -27,13 +28,17 @@ int		ft_duplicate_nbr(char **av, int ac);
 int		ft_arg_protection(char **av, int ac);
 
 /* Checking if is Sorted */
-int		get_nbr(t_list *stack_a);
+int		get_nbr(t_list *stack);
 int		ft_sorting_checker(t_list *stack_a);
 
-/* Sorting */
-void	ft_organizing_sort_type(t_list **stack_a);
+/* Operands */
 void	ft_swap(t_list **stack);
 void	ft_rotate(t_list **stack);
 void	ft_rev_rotate(t_list **stack);
+void	ft_push(t_list **origin, t_list **dest);
+
+/* Sorting */
+void	ft_organizing_sort_method(t_list **stack_a);
 void	ft_sorting_three(t_list **stack, char name_stack);
+
 #endif
