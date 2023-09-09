@@ -35,5 +35,6 @@ int	main(int ac, char **av)
 		ft_error ();
 	if (ft_sorting_checker(stack_a) == 1)
 		ft_choosing_sort_method (&stack_a);
+	ft_lstclear(&stack_a, free_function);
 	return (0);
 }

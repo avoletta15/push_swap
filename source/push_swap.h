@@ -17,6 +17,7 @@ typedef struct	s_movements
 
 /* Error */
 void	ft_error(void);
+void	free_function(void *content);
 
 /* Outputs*/
 void	ft_swap_out(t_list **stack, char name_stack);
@@ -51,6 +52,9 @@ int		ft_movements_top(t_list *node, t_list **stack);
 int		finding_right_place(t_list *node,t_list **stack);
 t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves moves);
 
+/* Movements */
+void	ft_filling_b(t_list *cheapest, t_list **stack_a, t_list **stack_b, t_moves moves);
+void	ft_from_a_to_b(t_list **stack_a, t_list **stack_b, t_list *cheapest, t_moves moves);
 /* Sorting */
 void	ft_choosing_sort_method(t_list **stack_a);
 void	ft_sorting_three(t_list **stack, char name_stack);
