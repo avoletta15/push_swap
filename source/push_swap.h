@@ -9,13 +9,21 @@
 # include <sys/_types.h>
 # include "../libft/libft.h"
 
+typedef struct	s_movements
+{
+	int		moves_a;
+	int		moves_b;
+}			t_moves;
+
 /* Error */
 void	ft_error(void);
 
 /* Outputs*/
 void	ft_swap_out(t_list **stack, char name_stack);
 void	ft_rotate_out(t_list **stack, char name_stack);
+void	ft_rotate_both(t_list **stack_a, t_list **stack_b);
 void	ft_revrotate_out(t_list **stack, char name_stack);
+void	ft_revrotate_both(t_list **stack_a, t_list **stack_b);
 void	ft_push_out(t_list **origin, t_list **dest, char name_stack);
 
 /* List Creation */
@@ -37,8 +45,14 @@ void	ft_rotate(t_list **stack);
 void	ft_rev_rotate(t_list **stack);
 void	ft_push(t_list **origin, t_list **dest);
 
+/* Move Cost */
+
+int		ft_movements_top(t_list *node, t_list **stack);
+int		finding_right_place(t_list *node,t_list **stack);
+t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves moves);
+
 /* Sorting */
-void	ft_organizing_sort_method(t_list **stack_a);
+void	ft_choosing_sort_method(t_list **stack_a);
 void	ft_sorting_three(t_list **stack, char name_stack);
 
 #endif
