@@ -10,8 +10,8 @@ void	ft_choosing_sort_method(t_list **stack_a)
 	else if (ft_lstsize(*stack_a) == 3)
 		ft_sorting_three(stack_a, 'a');
 	else
-		ft_sorting_larger_stack(stack_a, stack_b);
-	ft_lstclear(stack_b, free_function);
+		ft_sorting_larger_stack(stack_a, &stack_b);
+	ft_lstclear(&stack_b, free_function);
 }
 
 void	ft_sorting_three(t_list **stack, char name_stack)
@@ -51,19 +51,25 @@ void	ft_sorting_three(t_list **stack, char name_stack)
 void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*cheapest;
-	t_moves	moves;
+	t_moves	*moves;
+
+	moves = (t_moves *)malloc(sizeof(t_moves));
 
 	ft_push_out(stack_a, stack_b, 'b');
 	ft_push_out(stack_a, stack_b, 'b');
 	while(ft_lstsize(*stack_a) > 3)
 	{
-		ft_from_a_to_b(stack_a, stack_b, cheapest, moves);
-		(*stack_a) = (*stack_a)->next;
+		cheapest = ft_find_cheapest(stack_a, stack_b, moves);
+		printf("Cheapest: %d\n", get_nbr(cheapest));
+		printf("------------------------------\n");
+		// ft_from_a_to_b(stack_a, stack_b, cheapest, moves);
+		// (*stack_a) = (*stack_a)->next;
 	}
-	if (ft_sorting_checker(stack_a) == 1)
-		ft_sorting_three(stack_a, 'a');
-	while(ft_lstsize(*stack_b) > 0)
-	{
-		/* passar os numeros de B -> A */
-	}
+	// if (ft_sorting_checker(stack_a) == 1)
+	// 	ft_sorting_three(stack_a, 'a');
+	// while(ft_lstsize(*stack_b) > 0)
+	// {
+	// 	/* passar os numeros de B -> A */
+	//  }
+	free(moves);
 }

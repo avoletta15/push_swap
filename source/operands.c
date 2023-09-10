@@ -42,8 +42,10 @@ void	ft_push(t_list **origin, t_list **dest)
 {
 	t_list	*temp;
 
-	temp = *dest;
-	dest = (*dest)->next;
-	temp->next = *origin;
+	if (origin == NULL || *origin == NULL)
+		return ;
+	temp = (*origin)->next;
+	(*origin)->next = (*dest);
+	*dest = *origin;
 	*origin = temp;
 }
