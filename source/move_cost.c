@@ -81,12 +81,8 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 	cheapest = copy_stack;
 	while(copy_stack)
 	{
-		printf("\n------------------------------\n");
-		printf("NUMBER: %d\n", get_nbr(copy_stack));
 		origin_moves = ft_movements_top(copy_stack, stack_a);
-		printf("Origin Moves: %d\n", origin_moves);
 		dest_moves = finding_right_place(copy_stack, stack_b);
-		printf("Dest Moves: %d\n", dest_moves);
 		if (origin_moves > 0 && dest_moves > 0)
 		{
 			if (origin_moves > dest_moves)
@@ -117,8 +113,6 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 		}
 		total_moves_before = total_moves;
 		(copy_stack) = (copy_stack)->next;
-		printf("Total Moves: %d\n", total_moves);
 	}
-	printf("------------------------------\n");
 	return(cheapest);
 }
