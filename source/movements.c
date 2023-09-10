@@ -30,12 +30,12 @@ void	ft_filling_b(t_list **stack_a, t_list **stack_b, t_moves *moves)
 			}
 			if (moves->moves_b > 0)
 			{	
-				ft_rotate_out(stack_a, 'b');
+				ft_rotate_out(stack_b, 'b');
 				moves->moves_b--;
 			}
 			if (moves->moves_b < 0)
 			{
-				ft_revrotate_out(stack_a, 'b');
+				ft_revrotate_out(stack_b, 'b');
 				moves->moves_b--;
 			}
 		}

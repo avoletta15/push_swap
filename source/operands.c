@@ -47,5 +47,6 @@ void	ft_push(t_list **origin, t_list **dest)
 	temp = (*origin)->next;
 	(*origin)->next = (*dest);
 	*dest = *origin;
+	(*origin) = (*origin)->next;
 	*origin = temp;
 }
