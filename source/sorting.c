@@ -57,11 +57,13 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 
 	ft_push_out(stack_a, stack_b, 'b');
 	ft_push_out(stack_a, stack_b, 'b');
-	while(ft_lstsize(*stack_a) > 3)
+	while(*stack_a && ft_lstsize(*stack_a) > 3)
 	{
+		printf("Head: %d\n", get_nbr(*stack_a));
 		cheapest = ft_find_cheapest(stack_a, stack_b, moves);
+		printf("Cheapest: %d\n", get_nbr(cheapest));
 		ft_from_a_to_b(stack_a, stack_b, moves);
-		(*stack_a) = (*stack_a)->next;
+		// (*stack_a) = (*stack_a)->next;
 	}
 	// if (ft_sorting_checker(stack_a) == 1)
 	// 	ft_sorting_three(stack_a, 'a');
