@@ -60,13 +60,16 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 	{
 		cheapest = ft_find_cheapest(stack_a, stack_b, moves);
 		printf("Cheapest: %d\n", get_nbr(cheapest));
-		ft_from_a_to_b(stack_a, stack_b, moves);
+		ft_from_origin_to_dest(stack_a, stack_b, moves, 'b');
 	}
-	// if (ft_sorting_checker(stack_a) == 1)
-	// 	ft_sorting_three(stack_a, 'a');
-	// while(ft_lstsize(*stack_b) > 0)
-	// {
-	// 	/* passar os numeros de B -> A */
-	//  }
+	if (ft_sorting_checker(*stack_a) == 1)
+		ft_sorting_three(stack_a, 'a');
+	while(ft_lstsize(*stack_b) > 0)
+	{
+		moves->moves_a = 0;
+		moves->moves_b = 0;
+		finding_right_place(*stack_b, stack_a);
+		ft_from_origin_to_dest(stack_b, stack_a, moves, 'a');
+	}
 	free(moves);
 }
