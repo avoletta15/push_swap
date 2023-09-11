@@ -60,4 +60,8 @@ void	ft_choosing_sort_method(t_list **stack_a);
 void	ft_sorting_three(t_list **stack, char name_stack);
 void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b);
 
+
+// Test
+void	display_nodes(t_list *stack);
+// Test
 #endif

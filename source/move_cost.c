@@ -113,5 +113,7 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 		}
 		(copy_stack) = (copy_stack)->next;
 	}
+	moves->moves_a = 0;
+	moves->moves_b = 0;
 	return(cheapest);
 }

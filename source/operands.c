@@ -33,9 +33,19 @@ void	ft_rotate(t_list **stack)
 void	ft_rev_rotate(t_list **stack)
 {
 	t_list	*temp;
+	t_list	*penultimate;
+	int		i;
 
+	i = ft_lstsize(*stack) - 1;
 	temp = ft_lstlast(*stack);
+	penultimate = *stack;
+	while(i > 1)
+	{
+		penultimate = penultimate->next;
+		i--;
+	}
 	ft_lstadd_front(stack, temp);
+	penultimate->next = NULL;
 }
 
 void	ft_push(t_list **origin, t_list **dest)
