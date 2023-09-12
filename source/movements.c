@@ -5,7 +5,6 @@ void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 {
 	while (moves->moves_a || moves->moves_b)
 	{
-		printf("INSIDE\n");
 		if (moves->moves_a > 0 && moves->moves_b > 0)
 		{
 			ft_revrotate_both(origin, dest);
@@ -38,7 +37,7 @@ void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 			if (moves->moves_b < 0)
 			{
 				ft_revrotate_out(dest, 'b');
-				moves->moves_b--;
+				moves->moves_b++;
 			}
 		}
 	}
@@ -46,8 +45,8 @@ void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 
 void	ft_from_origin_to_dest(t_list **origin, t_list **dest, t_moves *moves, char name_stack)
 {	
-	// printf("Moves Origin: %d\n", moves->moves_a);
-	// printf("Moves Dest: %d\n", moves->moves_b);
+	// ft_printf("Moves A: %i\n", moves->moves_a);
+	// ft_printf("Moves B: %i\n", moves->moves_b);
 	ft_organizing_stack(origin, dest, moves);
 	ft_push_out(origin, dest, name_stack);
 }
