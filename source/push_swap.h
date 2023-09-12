@@ -13,7 +13,14 @@ typedef struct	s_movements
 {
 	int		moves_a;
 	int		moves_b;
-}			t_moves;
+}
+			t_moves;
+			
+typedef struct	s_edges
+{
+	t_list		*max;
+	t_list		*min;
+}			t_edges;
 
 /* Error */
 void	ft_error(void);
@@ -51,6 +58,7 @@ void	ft_push(t_list **origin, t_list **dest);
 int		ft_movements_top(t_list *node, t_list **stack);
 int		finding_right_place(t_list *node,t_list **stack);
 t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves);
+int		max_in_the_stack(t_list *stack);
 
 /* Movements */
 void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves);
