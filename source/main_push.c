@@ -37,8 +37,10 @@ int	main(int ac, char **av)
 	display_nodes(stack_a);
 	if (ft_sorting_checker(stack_a) == 1)
 		ft_choosing_sort_method (&stack_a);
-	ft_printf("Stack_A Before free:\n");
-	display_nodes(stack_a);
+	// ft_printf("Stack_A Done:\n");
+	// display_nodes(stack_a);
 	ft_lstclear(&stack_a, free_function);
+	// ft_printf("Stack_A after FREE:\n");
+	// display_nodes(stack_a);
 	return (0);
 }

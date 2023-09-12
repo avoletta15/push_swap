@@ -16,7 +16,6 @@ void	ft_choosing_sort_method(t_list **stack_a)
 
 void	ft_sorting_three(t_list **stack, char name_stack)
 {
-	printf("Sorting 3\n");
 	if (get_nbr(*stack) > get_nbr((*stack)->next) \
 		&& get_nbr(*stack) > get_nbr((*stack)->next->next))
 	{
@@ -51,22 +50,18 @@ void	ft_sorting_three(t_list **stack, char name_stack)
 
 void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*cheapest;
 	t_moves	*moves;
+	// t_list	*cheapest;
 
 	moves = (t_moves *)malloc(sizeof(t_moves));
 	ft_push_out(stack_a, stack_b, 'b');
 	ft_push_out(stack_a, stack_b, 'b');
 	while(ft_lstsize(*stack_a) > 3)
 	{
-		cheapest = ft_find_cheapest(stack_a, stack_b, moves);
-		printf("Cheapest: %d\n", get_nbr(cheapest));
+		ft_find_cheapest(stack_a, stack_b, moves);
+		// ft_printf("Cheapest:%d\n", get_nbr(cheapest));
 		ft_from_origin_to_dest(stack_a, stack_b, moves, 'b');
 	}
-	ft_printf("Stack_B After pb pb: \n");
-	display_nodes(*stack_b);
-	ft_printf("Stack_A After pb pb: \n");
-	display_nodes(*stack_a);
 	if (ft_sorting_checker(*stack_a) == 1)
 	{
 		if (ft_lstsize(*stack_a) == 2)
@@ -74,6 +69,12 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 		else if (ft_lstsize(*stack_a) == 3)
 			ft_sorting_three(stack_a, 'a');
 	}
+	while (max_in_the_stack(*stack_b) != get_nbr(*stack_b))
+	{
+		ft_rotate_out(stack_b, 't');
+	}
+	ft_printf("Stack_B Sorted:\n");
+	display_nodes(*stack_b);
 	while(ft_lstsize(*stack_b) > 0)
 	{
 		moves->moves_a = 0;
@@ -81,7 +82,5 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 		finding_right_place(*stack_b, stack_a);
 		ft_from_origin_to_dest(stack_b, stack_a, moves, 'a');
 	}
-	ft_printf("Stack_A After All: \n");
-	display_nodes(*stack_a);
 	free(moves);
 }
