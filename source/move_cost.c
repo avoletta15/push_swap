@@ -20,10 +20,13 @@ int	ft_movements_top(t_list *node, t_list **stack)
 		node = node->next;
 		pull_front++;
 	}
-	// ft_printf("\n===================\n");
-	// ft_printf("For number %i pb: %i\n", get_nbr(copy_stack), push_back);
-	// ft_printf("For number %i pf: %i\n", get_nbr(copy_stack), pull_front);
-	// ft_printf("===================\n\n");
+	if(get_nbr(copy_stack) == 81)
+	{
+		ft_printf("\n===================\n");
+		ft_printf("For number %i pb: %i\n", get_nbr(copy_stack), push_back);
+		ft_printf("For number %i pf: %i\n", get_nbr(copy_stack), pull_front);
+		ft_printf("===================\n\n");
+	}
 	if(push_back < pull_front)
 		return(push_back);
 	else
@@ -81,9 +84,13 @@ int	finding_right_place(t_list *node,t_list **stack)
 	// printf("Inicio da Stack_B: %d\n", get_nbr(copy_stack));
 	if (ft_head_or_tail(copy_stack, node) == 0)
 	{
+		// ft_printf("=======================\n");
+		// ft_printf("Edges: %i\n", get_nbr(node));
 		key = max_in_the_stack(copy_stack);
+		// ft_printf("Max in Stack_b: %i\n", key);
 		while (key != get_nbr(copy_stack))
 			copy_stack = copy_stack->next;
+		// ft_printf("Max in Moves to TOP: %i\n", get_nbr(copy_stack));
 		moves = ft_movements_top(copy_stack, stack);
 		// ft_printf("Moves: %d node: %d\n", moves, get_nbr(node));
 		return(moves);
@@ -132,7 +139,6 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 	{
 		origin_moves = ft_movements_top(copy_stack, stack_a);
 		dest_moves = finding_right_place(copy_stack, stack_b);
-		// ft_printf("=======================\n");
 		// ft_printf("Analized number: %i\n", get_nbr(copy_stack));
 		// ft_printf("moves_a of %i: %i\n", get_nbr(copy_stack), origin_moves);
 		// ft_printf("moves_b of %i: %i\n", get_nbr(copy_stack), dest_moves);
@@ -160,14 +166,14 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 		if(total_moves < total_moves_before)
 		{
 			cheapest = copy_stack;
-			moves->moves_a = origin_moves;
-			moves->moves_b = dest_moves;
+			moves->origin = origin_moves;
+			moves->dest = dest_moves;
 			total_moves_before = total_moves;
 		}
 		// ft_printf("total moves for %i: %i \n", get_nbr(copy_stack), total_moves);
 		// ft_printf("=======================\n");
 		(copy_stack) = (copy_stack)->next;
 	}
-	ft_printf("cheapest: %i\n", get_nbr(cheapest));
+	// ft_printf("cheapest: %i\n", get_nbr(cheapest));
 	return(cheapest);
 }

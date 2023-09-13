@@ -13,7 +13,7 @@ void	ft_rotate_both(t_list **stack_a, t_list **stack_b)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
-	ft_putendl_fd("rrr", 1);
+	ft_putendl_fd("rr", 1);
 }
 
 
@@ -30,5 +30,5 @@ void	ft_revrotate_both(t_list **stack_a, t_list **stack_b)
 {
 	ft_rev_rotate(stack_a);
 	ft_rev_rotate(stack_b);
-	ft_putendl_fd("rrv", 1);
+	ft_putendl_fd("rrr", 1);
 }

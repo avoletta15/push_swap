@@ -6,13 +6,13 @@
 # include <string.h>
 # include <unistd.h>
 # include <limits.h>
-# include <sys/_types.h>
+// # include <sys/_types.h>
 # include "../libft/libft.h"
 
 typedef struct	s_movements
 {
-	int		moves_a;
-	int		moves_b;
+	int		origin;
+	int		dest;
 }
 			t_moves;
 			
@@ -45,7 +45,8 @@ int		ft_arg_protection(char **av, int ac);
 
 /* Checking if is Sorted */
 int		get_nbr(t_list *stack);
-int		ft_sorting_checker(t_list *stack_a);
+int		ft_sorting_checker(t_list *stack);
+int		ft_sorting_checker_two(t_list *stack);
 
 /* Operands */
 void	ft_swap(t_list **stack);

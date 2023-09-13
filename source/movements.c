@@ -3,41 +3,41 @@
 /* verificar o rotate de b quando: 2 1 3 6 5 8 \ 9 12 */
 void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 {
-	while (moves->moves_a || moves->moves_b)
+	while (moves->origin || moves->dest)
 	{
-		if (moves->moves_a > 0 && moves->moves_b > 0)
+		if (moves->origin > 0 && moves->dest > 0)
 		{
-			ft_revrotate_both(origin, dest);
-			moves->moves_a--;
-			moves->moves_b--;
+			ft_rotate_both(origin, dest);
+			moves->origin--;
+			moves->dest--;
 		}
-		else if (moves->moves_a < 0 && moves->moves_b < 0)
+		else if (moves->origin < 0 && moves->dest < 0)
 		{
 			ft_revrotate_both(origin, dest);
-			moves->moves_a++;
-			moves->moves_b++;
+			moves->origin++;
+			moves->dest++;
 		}
 		else
 		{
-			if (moves->moves_a > 0)
+			if (moves->origin > 0)
 			{	
 				ft_rotate_out(origin, 'a');
-				moves->moves_a--;
+				moves->origin--;
 			}
-			if (moves->moves_a < 0)
+			if (moves->origin < 0)
 			{
 				ft_revrotate_out(origin, 'a');
-				moves->moves_a++;
+				moves->origin++;
 			}
-			if (moves->moves_b > 0)
+			if (moves->dest > 0)
 			{	
 				ft_rotate_out(dest, 'b');
-				moves->moves_b--;
+				moves->dest--;
 			}
-			if (moves->moves_b < 0)
+			if (moves->dest < 0)
 			{
 				ft_revrotate_out(dest, 'b');
-				moves->moves_b++;
+				moves->dest++;
 			}
 		}
 	}
@@ -45,8 +45,8 @@ void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 
 void	ft_from_origin_to_dest(t_list **origin, t_list **dest, t_moves *moves, char name_stack)
 {	
-	// ft_printf("Moves A: %i\n", moves->moves_a);
-	// ft_printf("Moves B: %i\n", moves->moves_b);
+	// ft_printf("Moves A: %i\n", moves->origin);
+	// ft_printf("Moves B: %i\n", moves->dest);
 	ft_organizing_stack(origin, dest, moves);
 	ft_push_out(origin, dest, name_stack);
 }

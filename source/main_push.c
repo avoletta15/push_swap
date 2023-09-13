@@ -29,16 +29,21 @@ int	main(int ac, char **av)
 				ft_lstadd_back(&stack_a, node);
 				j++;
 			}
+			else
+				ft_error ();
 		}
 	}
 	else
 		ft_error ();
-	ft_printf("Stack_A Before:\n");
-	display_nodes(stack_a);
+	// ft_printf("Stack_A Before:\n");
+	// display_nodes(stack_a);
 	if (ft_sorting_checker(stack_a) == 1)
 		ft_choosing_sort_method (&stack_a);
-	// ft_printf("Stack_A Done:\n");
-	// display_nodes(stack_a);
+	if (ft_sorting_checker(stack_a) == 0)
+		ft_printf("Stack_A IS FUCKING DONE:\n");
+	else
+		ft_printf("WROOOOONG!!!");
+	display_nodes(stack_a);
 	ft_lstclear(&stack_a, free_function);
 	// ft_printf("Stack_A after FREE:\n");
 	// display_nodes(stack_a);

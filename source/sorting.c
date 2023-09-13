@@ -51,7 +51,6 @@ void	ft_sorting_three(t_list **stack, char name_stack)
 void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 {
 	t_moves	*moves;
-	// t_list	*cheapest;
 
 	moves = (t_moves *)malloc(sizeof(t_moves));
 	ft_push_out(stack_a, stack_b, 'b');
@@ -59,7 +58,6 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 	while(ft_lstsize(*stack_a) > 3)
 	{
 		ft_find_cheapest(stack_a, stack_b, moves);
-		// ft_printf("Cheapest:%d\n", get_nbr(cheapest));
 		ft_from_origin_to_dest(stack_a, stack_b, moves, 'b');
 	}
 	if (ft_sorting_checker(*stack_a) == 1)
@@ -69,17 +67,20 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 		else if (ft_lstsize(*stack_a) == 3)
 			ft_sorting_three(stack_a, 'a');
 	}
-	while (max_in_the_stack(*stack_b) != get_nbr(*stack_b))
-	{
-		ft_rotate_out(stack_b, 't');
-	}
+	// while (max_in_the_stack(*stack_b) != get_nbr(*stack_b))
+	// {
+	// 	ft_rotate_out(stack_b, 't');
+	// }
+	// if (ft_sorting_checker_two(*stack_b) == 0)
+	// 	ft_printf("UHUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU!!!!!!!!!!!!!!!!!!!!\n");
+	// else
+	// 	ft_printf("OH NO!\n");
 	ft_printf("Stack_B Sorted:\n");
 	display_nodes(*stack_b);
 	while(ft_lstsize(*stack_b) > 0)
 	{
-		moves->moves_a = 0;
-		moves->moves_b = 0;
-		finding_right_place(*stack_b, stack_a);
+		moves->origin = 0;
+		moves->dest = finding_right_place(*stack_b, stack_a);
 		ft_from_origin_to_dest(stack_b, stack_a, moves, 'a');
 	}
 	free(moves);
