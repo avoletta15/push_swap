@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-/* verificar o rotate de b quando: 2 1 3 6 5 8 \ 9 12 */
 void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 {
 	while (moves->origin || moves->dest)
@@ -21,22 +20,22 @@ void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves)
 		{
 			if (moves->origin > 0)
 			{	
-				ft_rotate_out(origin, 'a');
+				ft_rotate_out(origin, moves->origin_char);
 				moves->origin--;
 			}
 			if (moves->origin < 0)
 			{
-				ft_revrotate_out(origin, 'a');
+				ft_revrotate_out(origin, moves->origin_char);
 				moves->origin++;
 			}
 			if (moves->dest > 0)
 			{	
-				ft_rotate_out(dest, 'b');
+				ft_rotate_out(dest, moves->dest_char);
 				moves->dest--;
 			}
 			if (moves->dest < 0)
 			{
-				ft_revrotate_out(dest, 'b');
+				ft_revrotate_out(dest, moves->dest_char);
 				moves->dest++;
 			}
 		}

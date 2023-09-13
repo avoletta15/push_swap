@@ -13,6 +13,8 @@ typedef struct	s_movements
 {
 	int		origin;
 	int		dest;
+	char	dest_char;
+	char	origin_char;
 }
 			t_moves;
 			
@@ -60,6 +62,9 @@ int		ft_movements_top(t_list *node, t_list **stack);
 int		finding_right_place(t_list *node,t_list **stack);
 t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves);
 int		max_in_the_stack(t_list *stack);
+int		min_in_the_stack(t_list *stack);
+int		ft_head_or_tail(t_list *stack, t_list *node);
+
 
 /* Movements */
 void	ft_organizing_stack(t_list **origin, t_list **dest, t_moves *moves);
@@ -72,5 +77,7 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b);
 
 // Test
 void	display_nodes(t_list *stack);
+int		back_to_a(t_list *node,t_list **stack);
+
 // Test
 #endif

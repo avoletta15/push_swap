@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_nodes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariaavoletta <mariaavoletta@student.42    +#+  +:+       +#+        */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:57:51 by mariaavolet       #+#    #+#             */
-/*   Updated: 2023/09/12 15:49:53 by mariaavolet      ###   ########.fr       */
+/*   Updated: 2023/09/13 17:30:45 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ void	display_nodes(t_list *stack)
 	while (stack)
 	{
 		ft_printf("{\n");
-		// ft_printf("	Node's addr: %p\n", stack);
 		ft_printf("	Node's nbr: %i\n", *(int *)stack->content);
-		//ft_printf("	Node's next: %p\n", stack->next);
 		if (!stack->next)
 			ft_printf("}\n");
 		else

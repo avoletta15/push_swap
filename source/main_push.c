@@ -35,17 +35,10 @@ int	main(int ac, char **av)
 	}
 	else
 		ft_error ();
-	// ft_printf("Stack_A Before:\n");
-	// display_nodes(stack_a);
 	if (ft_sorting_checker(stack_a) == 1)
 		ft_choosing_sort_method (&stack_a);
-	if (ft_sorting_checker(stack_a) == 0)
-		ft_printf("Stack_A IS FUCKING DONE:\n");
-	else
-		ft_printf("WROOOOONG!!!");
-	display_nodes(stack_a);
-	ft_lstclear(&stack_a, free_function);
-	// ft_printf("Stack_A after FREE:\n");
+	// ft_printf("Stack_a:\n");
 	// display_nodes(stack_a);
+	ft_lstclear(&stack_a, free_function);
 	return (0);
 }
