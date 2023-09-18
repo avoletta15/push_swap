@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_push.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/14 14:26:08 by marioliv          #+#    #+#             */
+/*   Updated: 2023/09/14 15:51:01 by marioliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*new_node(char *av)
@@ -23,22 +35,17 @@ int	main(int ac, char **av)
 	{
 		while (j < ac)
 		{
-			node = new_node(av[j]);
+			node = new_node(av[j++]);
 			if (node)
-			{
 				ft_lstadd_back(&stack_a, node);
-				j++;
-			}
 			else
 				ft_error ();
 		}
 	}
 	else
 		ft_error ();
-	if (ft_sorting_checker(stack_a) == 1)
+	if (ft_is_sorted_head_tail(stack_a) == 1)
 		ft_choosing_sort_method (&stack_a);
-	// ft_printf("Stack_a:\n");
-	// display_nodes(stack_a);
 	ft_lstclear(&stack_a, free_function);
 	return (0);
 }

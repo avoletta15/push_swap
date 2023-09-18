@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_to_a.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/18 17:12:26 by marioliv          #+#    #+#             */
+/*   Updated: 2023/09/18 17:13:12 by marioliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	back_to_a(t_list *node,t_list **stack)
+int	back_to_a(t_list *node, t_list **stack)
 {
+	t_list	*position;
 	t_list	*copy_stack;
-	t_list 	*position;
-	int		moves;	
+	int		moves;
 	int		key;
-
 
 	key = 0;
 	copy_stack = *stack;
@@ -18,20 +29,22 @@ int	back_to_a(t_list *node,t_list **stack)
 		while (key != get_nbr(copy_stack))
 			copy_stack = copy_stack->next;
 		moves = ft_movements_top(copy_stack, stack);
-		return(moves);
+		return (moves);
 	}
 	else
-	{	
-		while(copy_stack)
+	{
+		while (copy_stack)
 		{
-			if(get_nbr((copy_stack)) < get_nbr(node))
+			if (get_nbr((copy_stack)) < get_nbr(node))
 			{
-				if(copy_stack->next && get_nbr(copy_stack->next) > get_nbr(node))
+				if (copy_stack->next
+					&& get_nbr(copy_stack->next) > get_nbr(node))
 				{
 					position = copy_stack->next;
 					break ;
 				}
-				else if ((copy_stack->next == NULL) && get_nbr(*stack) > get_nbr(node))
+				else if ((copy_stack->next == NULL)
+					&& get_nbr(*stack) > get_nbr(node))
 				{
 					position = *stack;
 					break ;
@@ -41,5 +54,5 @@ int	back_to_a(t_list *node,t_list **stack)
 		}
 	}
 	moves = ft_movements_top(position, stack);
-	return(moves);
+	return (moves);
 }

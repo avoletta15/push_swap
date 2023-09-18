@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/18 17:15:04 by marioliv          #+#    #+#             */
+/*   Updated: 2023/09/18 17:16:43 by marioliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_choosing_sort_method(t_list **stack_a)
@@ -16,7 +28,7 @@ void	ft_choosing_sort_method(t_list **stack_a)
 
 void	ft_sorting_three(t_list **stack, char name_stack)
 {
-	if (get_nbr(*stack) > get_nbr((*stack)->next) \
+	if (get_nbr(*stack) > get_nbr((*stack)->next)
 		&& get_nbr(*stack) > get_nbr((*stack)->next->next))
 	{
 		if (get_nbr((*stack)->next) > get_nbr((*stack)->next->next))
@@ -28,15 +40,13 @@ void	ft_sorting_three(t_list **stack, char name_stack)
 			ft_rotate_out(stack, name_stack);
 		return ;
 	}
-	else if ((get_nbr(*stack) > get_nbr((*stack)->next) && \
-			get_nbr(*stack) < get_nbr((*stack)->next->next)) \
-			|| (get_nbr(*stack) < get_nbr((*stack)->next) && \
-			get_nbr(*stack) > get_nbr((*stack)->next->next)))
+	else if ((get_nbr(*stack) > get_nbr((*stack)->next) 
+			&& get_nbr(*stack) < get_nbr((*stack)->next->next)) 
+		|| (get_nbr(*stack) < get_nbr((*stack)->next) 
+			&& get_nbr(*stack) > get_nbr((*stack)->next->next)))
 	{
 		if (get_nbr(*stack) > get_nbr((*stack)->next))
 			ft_swap_out(stack, name_stack);
-
-
 		else if (get_nbr(*stack) < get_nbr((*stack)->next))
 			ft_revrotate_out(stack, name_stack);
 		return ;
@@ -58,12 +68,12 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 	ft_push_out(stack_a, stack_b, 'b');
 	moves->origin_char = 'a';
 	moves->dest_char = 'b';
-	while(ft_lstsize(*stack_a) > 3)
+	while (ft_lstsize(*stack_a) > 3)
 	{
 		ft_find_cheapest(stack_a, stack_b, moves);
 		ft_from_origin_to_dest(stack_a, stack_b, moves, 'b');
 	}
-	if (ft_sorting_checker(*stack_a) == 1)
+	if (ft_is_sorted_head_tail(*stack_a) == 1)
 	{
 		if (ft_lstsize(*stack_a) == 2)
 			ft_swap_out(stack_a, 'a');
@@ -72,14 +82,14 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 	}
 	moves->origin_char = 'b';
 	moves->dest_char = 'a';
-	while(ft_lstsize(*stack_b) > 0)
+	while (ft_lstsize(*stack_b) > 0)
 	{
 		moves->origin = 0;
 		moves->dest = back_to_a(*stack_b, stack_a);
 		ft_from_origin_to_dest(stack_b, stack_a, moves, 'a');
 	}
 	copy = *stack_a;
-	while(min_in_the_stack(*stack_a) != get_nbr(copy))
+	while (min_in_the_stack(*stack_a) != get_nbr(copy))
 		copy = copy->next;
 	moves->origin = ft_movements_top(copy, stack_a);
 	moves->dest = 0;

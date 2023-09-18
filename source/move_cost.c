@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_cost.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/14 14:31:59 by marioliv          #+#    #+#             */
+/*   Updated: 2023/09/18 17:09:54 by marioliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_movements_top(t_list *node, t_list **stack)
@@ -19,55 +31,18 @@ int	ft_movements_top(t_list *node, t_list **stack)
 		node = node->next;
 		pull_front++;
 	}
-	if(push_back < pull_front)
-		return(push_back);
+	if (push_back < pull_front)
+		return (push_back);
 	else
-		return(-(pull_front));
+		return (-(pull_front));
 }
 
-int	max_in_the_stack(t_list *stack)
-{
-	int	nbr;
-
-	nbr = get_nbr(stack);
-	while(stack)
-	{
-		if(get_nbr(stack) > nbr)
-			nbr = get_nbr(stack);
-		stack = stack->next;
-	}
-	return(nbr);
-}
-
-int	min_in_the_stack(t_list *stack)
-{
-	int	nbr;
-
-	nbr = get_nbr(stack);
-	while(stack)
-	{
-		if(get_nbr(stack) < nbr)
-			nbr = get_nbr(stack);
-		stack = stack->next;
-	}
-	return(nbr);
-}
-
-int	ft_head_or_tail(t_list *stack, t_list *node)
-{
-	if ((get_nbr(node) > max_in_the_stack(stack)) 
-		|| get_nbr(node) < min_in_the_stack(stack))
-		return(0);
-	return(1);
-}
-
-int	finding_right_place(t_list *node,t_list **stack)
+int	finding_right_place(t_list *node, t_list **stack)
 {
 	t_list	*copy_stack;
-	t_list 	*position;
-	int		moves;	
+	t_list	*position;
+	int		moves;
 	int		key;
-
 
 	key = 0;
 	copy_stack = *stack;
@@ -79,20 +54,22 @@ int	finding_right_place(t_list *node,t_list **stack)
 		while (key != get_nbr(copy_stack))
 			copy_stack = copy_stack->next;
 		moves = ft_movements_top(copy_stack, stack);
-		return(moves);
+		return (moves);
 	}
 	else
-	{	
-		while(copy_stack)
+	{
+		while (copy_stack)
 		{
-			if(get_nbr((copy_stack)) > get_nbr(node))
+			if (get_nbr((copy_stack)) > get_nbr(node))
 			{
-				if(copy_stack->next && get_nbr(copy_stack->next) < get_nbr(node))
+				if (copy_stack->next
+					&& get_nbr(copy_stack->next) < get_nbr(node))
 				{
 					position = copy_stack->next;
 					break ;
 				}
-				else if ((copy_stack->next == NULL) && get_nbr(*stack) < get_nbr(node))
+				else if ((copy_stack->next == NULL)
+					&& get_nbr(*stack) < get_nbr(node))
 				{
 					position = *stack;
 					break ;
@@ -102,7 +79,36 @@ int	finding_right_place(t_list *node,t_list **stack)
 		}
 	}
 	moves = ft_movements_top(position, stack);
-	return(moves);
+	return (moves);
+}
+
+int	rotation_cost(int origin_moves, int dest_moves)
+{
+	int	total_moves;
+
+	total_moves = 0;
+	if (origin_moves > 0 && dest_moves > 0)
+	{
+		if (origin_moves > dest_moves)
+			total_moves = origin_moves;
+		else
+			total_moves = dest_moves;
+	}
+	else if (origin_moves < 0 && dest_moves < 0)
+	{
+		if (origin_moves < dest_moves)
+			total_moves = -1 * (origin_moves);
+		else
+			total_moves = -1 * (dest_moves);
+	}
+	else
+	{
+		if (origin_moves <= 0)
+			total_moves = (-1 * origin_moves) + dest_moves;
+		else
+			total_moves = origin_moves + (-1 * dest_moves);
+	}
+	return (total_moves);
 }
 
 t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
@@ -113,37 +119,16 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 	int		dest_moves;
 	int		total_moves;
 	int		total_moves_before;
-	
-	total_moves = 0;
+
 	copy_stack = *stack_a;
 	cheapest = copy_stack;
 	total_moves_before = INT_MAX;
-	while(copy_stack)
+	while (copy_stack)
 	{
 		origin_moves = ft_movements_top(copy_stack, stack_a);
 		dest_moves = finding_right_place(copy_stack, stack_b);
-		if (origin_moves > 0 && dest_moves > 0)
-		{
-			if (origin_moves > dest_moves)
-				total_moves = origin_moves;
-			else
-				total_moves = dest_moves;
-		}
-		else if (origin_moves < 0 && dest_moves < 0)
-		{
-			if (origin_moves < dest_moves)
-				total_moves = -1 * (origin_moves);
-			else
-				total_moves = -1 * (dest_moves);
-		}
-		else
-		{
-			if (origin_moves <= 0)
-				total_moves = (-1 * origin_moves) + dest_moves;
-			else 
-				total_moves = origin_moves + (-1 * dest_moves);
-		}
-		if(total_moves < total_moves_before)
+		total_moves = rotation_cost(origin_moves, dest_moves);
+		if (total_moves < total_moves_before)
 		{
 			cheapest = copy_stack;
 			moves->origin = origin_moves;
@@ -152,5 +137,5 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 		}
 		(copy_stack) = (copy_stack)->next;
 	}
-	return(cheapest);
+	return (cheapest);
 }
