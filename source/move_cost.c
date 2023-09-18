@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:31:59 by marioliv          #+#    #+#             */
-/*   Updated: 2023/09/18 17:09:54 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/18 19:45:05 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,14 @@ int	rotation_cost(int origin_moves, int dest_moves)
 	}
 	else
 	{
-		if (origin_moves <= 0)
+		if (origin_moves < 0)
 			total_moves = (-1 * origin_moves) + dest_moves;
-		else
+		else if (dest_moves < 0)
 			total_moves = origin_moves + (-1 * dest_moves);
+		else
+			return (origin_moves + dest_moves);
 	}
+	// ft_printf("Calculated total rotation: %i\n", total_moves);
 	return (total_moves);
 }
 
@@ -119,6 +122,7 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 	int		dest_moves;
 	int		total_moves;
 	int		total_moves_before;
+	// static int	i;
 
 	copy_stack = *stack_a;
 	cheapest = copy_stack;
@@ -127,7 +131,18 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 	{
 		origin_moves = ft_movements_top(copy_stack, stack_a);
 		dest_moves = finding_right_place(copy_stack, stack_b);
+		// ft_printf("Calculated number: %i\n", get_nbr(copy_stack));
 		total_moves = rotation_cost(origin_moves, dest_moves);
+		// ft_printf("Assigned total moves: %i\n", total_moves);
+		// if(get_nbr(copy_stack) == 66)
+		// {
+		// 	ft_printf("\n\n=======================================================\n");
+		// 	ft_printf("I AM THE RIGHT ONE: %i\n", get_nbr(copy_stack));
+		// 	ft_printf("Moves dest: %i\n", moves->dest);
+		// 	ft_printf("Moves origin: %i\n", moves->origin);
+		// 	ft_printf("Total moves: %i\n", total_moves);
+		// 	ft_printf("=======================================================\n\n");
+		// }
 		if (total_moves < total_moves_before)
 		{
 			cheapest = copy_stack;
@@ -137,5 +152,13 @@ t_list	*ft_find_cheapest(t_list **stack_a, t_list **stack_b, t_moves *moves)
 		}
 		(copy_stack) = (copy_stack)->next;
 	}
+	// i++;
+	// ft_printf("\n\n=======================================================\n");
+	// ft_printf("Call %i\n", i);
+	// ft_printf("Chepeast: %i\n", get_nbr(cheapest));
+	// ft_printf("Moves dest: %i\n", moves->dest);
+	// ft_printf("Moves origin: %i\n", moves->origin);
+	// ft_printf("Total moves: %i\n", total_moves);
+	// ft_printf("=======================================================\n\n");
 	return (cheapest);
 }
