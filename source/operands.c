@@ -6,18 +6,12 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:10:57 by marioliv          #+#    #+#             */
-/*   Updated: 2023/09/18 17:11:24 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:42:43 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/**************************************************************
-* saving the begining of the list                             *
-* syaing that the begining of the list is now the second node *
-* sayng that the begining of the string now points to NULL    *
-* saying that the second node is now the former first node    *
-***************************************************************/
 void	ft_swap(t_list **stack)
 {
 	t_list	*temp;
@@ -39,8 +33,6 @@ void	ft_rotate(t_list **stack)
 	first->next = NULL;
 	ft_lstadd_back(stack, first);
 }
-
-/* free_matrix(stack_temp) acima*/
 
 void	ft_rev_rotate(t_list **stack)
 {

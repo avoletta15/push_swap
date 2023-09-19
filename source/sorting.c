@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:15:04 by marioliv          #+#    #+#             */
-/*   Updated: 2023/09/18 17:16:43 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:26:31 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,26 @@ void	ft_choosing_sort_method(t_list **stack_a)
 	else if (ft_lstsize(*stack_a) == 3)
 		ft_sorting_three(stack_a, 'a');
 	else
-		ft_sorting_larger_stack(stack_a, &stack_b);
+		ft_sorting_larger_stack_go(stack_a, &stack_b);
 	ft_lstclear(&stack_b, free_function);
+}
+
+void	begins_with_bigger(t_list **stack, char name_stack)
+{
+	if (get_nbr((*stack)->next) > get_nbr((*stack)->next->next))
+	{
+		ft_rotate_out(stack, name_stack);
+		ft_swap_out(stack, name_stack);
+	}
+	else
+		ft_rotate_out(stack, name_stack);
 }
 
 void	ft_sorting_three(t_list **stack, char name_stack)
 {
 	if (get_nbr(*stack) > get_nbr((*stack)->next)
 		&& get_nbr(*stack) > get_nbr((*stack)->next->next))
-	{
-		if (get_nbr((*stack)->next) > get_nbr((*stack)->next->next))
-		{
-			ft_rotate_out(stack, name_stack);
-			ft_swap_out(stack, name_stack);
-		}
-		else
-			ft_rotate_out(stack, name_stack);
-		return ;
-	}
+		begins_with_bigger(stack, name_stack);
 	else if ((get_nbr(*stack) > get_nbr((*stack)->next) 
 			&& get_nbr(*stack) < get_nbr((*stack)->next->next)) 
 		|| (get_nbr(*stack) < get_nbr((*stack)->next) 
@@ -49,7 +51,6 @@ void	ft_sorting_three(t_list **stack, char name_stack)
 			ft_swap_out(stack, name_stack);
 		else if (get_nbr(*stack) < get_nbr((*stack)->next))
 			ft_revrotate_out(stack, name_stack);
-		return ;
 	}
 	else
 	{
@@ -58,10 +59,9 @@ void	ft_sorting_three(t_list **stack, char name_stack)
 	}
 }
 
-void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
+void	ft_sorting_larger_stack_go(t_list **stack_a, t_list **stack_b)
 {
 	t_moves	*moves;
-	t_list	*copy;
 
 	moves = (t_moves *)malloc(sizeof(t_moves));
 	ft_push_out(stack_a, stack_b, 'b');
@@ -80,6 +80,14 @@ void	ft_sorting_larger_stack(t_list **stack_a, t_list **stack_b)
 		else if (ft_lstsize(*stack_a) == 3)
 			ft_sorting_three(stack_a, 'a');
 	}
+	ft_sorting_larger_stack_back(stack_a, stack_b, moves);
+}
+
+void	ft_sorting_larger_stack_back(t_list **stack_a, t_list **stack_b,
+		t_moves *moves)
+{
+	t_list	*copy;
+
 	moves->origin_char = 'b';
 	moves->dest_char = 'a';
 	while (ft_lstsize(*stack_b) > 0)

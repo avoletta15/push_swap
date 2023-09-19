@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:31:51 by marioliv          #+#    #+#             */
-/*   Updated: 2023/09/14 14:31:52 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:55:16 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,24 @@ int	ft_isnbr(char **av, int ac)
 	int	j;
 
 	i = 0;
-	j = 1;
-	while (j < ac)
+	j = 0;
+	while (++j < ac)
 	{
-		if (((av[j][i] >= '-' || av[j][i] <= '+')) || \
-			(av[j][i] >= '0' && av[j][i] <= '9'))
+		if ((av[j][i] == '-' || av[j][i] == '+')
+			&& (ft_isdigit(av[j][i + 1]) == 0))
+			return (1);
+		else 
 		{
-			i++;
+			if (av[j][i] == '-' || av[j][i] == '+')
+				i++;
 			while (av[j][i])
 			{
-				if (av[j][i] >= '0' && av[j][i] <= '9')
-					i++;
-				else
+				if (!(av[j][i] >= '0' && av[j][i] <= '9'))
 					return (1);
+				i++;
 			}
 		}
 		i = 0;
-		j++;
 	}
 	return (0);
 }

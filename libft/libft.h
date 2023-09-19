@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 11:59:49 by htomas-d          #+#    #+#             */
-/*   Updated: 2023/07/03 13:57:03 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/19 08:57:47 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void				*ft_calloc(size_t n, size_t size);
 int					ft_isalnum(int a);
 int					ft_isalpha(int a);
 int					ft_atoi(const char *a);
+long long			ft_atoll(const char *str);
 int					ft_isascii(int a);
 int					ft_isdigit(int a);
 int					ft_isprint(int a);

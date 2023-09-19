@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 14:30:43 by marioliv          #+#    #+#             */
-/*   Updated: 2023/09/18 17:05:41 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/19 09:35:11 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,6 @@ int	ft_sorting_tail_head(t_list *stack)
 	return (0);
 }
 
-/* void	display_nodes(t_list *stack)
-{
-	while (stack)
-	{
-		ft_printf("{\n");
-		ft_printf("	Node's nbr: %i\n", *(int *)stack->content);
-		if (!stack->next)
-			ft_printf("}\n");
-		else
-			ft_printf("},\n");
-		stack = stack->next;
-	}
-} */
 void	ft_error(void)
 {
 	ft_putendl_fd("Error", 2);
