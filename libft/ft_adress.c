@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_adress.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 22:11:23 by marioliv          #+#    #+#             */
-/*   Updated: 2023/04/20 23:23:51 by marioliv         ###   ########.fr       */
+/*   Created: 2023/07/03 13:43:54 by marioliv          #+#    #+#             */
+/*   Updated: 2023/07/03 13:49:01 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+size_t	ft_adress(unsigned long int loc)
 {
-	t_list	*bu;
+	int	i;
 
-	while (*lst)
+	i = 0;
+	if (loc == 0)
+		i += ft_string("0x0");
+	else
 	{
-		bu = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = bu;
+		i += ft_string("0x");
+		i += ft_hexa(loc, HEXALOW);
 	}
-	lst = NULL;
+	return (i);
 }

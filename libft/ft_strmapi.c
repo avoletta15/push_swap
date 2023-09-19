@@ -6,14 +6,14 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 12:14:30 by marioliv          #+#    #+#             */
-/*   Updated: 2023/04/19 15:18:37 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/07/03 13:58:51 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{	
+{
 	size_t	len;
 	size_t	i;
 	char	*str;
