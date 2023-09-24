@@ -13,7 +13,17 @@ ORANGE = \033[38;5;208m
 DEFAULT = \033[0m
 YELLOW = \033[1;33m
 
-SRCS = $(wildcard source/*.c)
+SRCS = 	source/checkers.c \
+		source/edges.c \
+		source/input_management.c \
+		source/main_push.c \
+		source/midle.c \
+		source/move_cost.c \
+		source/movements.c \
+		source/operands.c \
+		source/rotate_revrotate.c \
+		source/sorting.c \
+		source/swap_push.c
 
 OBJS = $(SRCS:.c=.o)
 

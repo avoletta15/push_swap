@@ -6,7 +6,7 @@
 /*   By: marioliv <marioliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 17:11:38 by marioliv          #+#    #+#             */
-/*   Updated: 2023/09/19 11:41:34 by marioliv         ###   ########.fr       */
+/*   Updated: 2023/09/24 13:25:57 by marioliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			allocating_edges_back(t_list *copy_stack, t_list **stack);
 /* Input Management */
 int			ft_isnbr(char **av, int ac);
 int			ft_size_int(char **av, int ac);
-int			ft_duplicate_nbr(char **av, int ac);
+int			ft_duplicate_nbr(t_list **stack);
 int			ft_arg_protection(char **av, int ac);
 
 /* Midle */
